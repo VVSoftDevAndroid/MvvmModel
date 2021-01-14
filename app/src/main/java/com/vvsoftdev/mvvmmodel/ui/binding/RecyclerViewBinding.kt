@@ -18,14 +18,15 @@ object RecyclerViewBinding {
     @BindingAdapter("toast")
     fun bindToast(view: RecyclerView, text: String?) {
         text?.let {
-            Toast.makeText(view.context, it, Toast.LENGTH_SHORT).show()
-        } ?: Toast.makeText(view.context, "", Toast.LENGTH_SHORT).show()
+            if (it.isNotEmpty())
+                Toast.makeText(view.context, it, Toast.LENGTH_SHORT).show()
+        }
 
     }
 
     @JvmStatic
-    @BindingAdapter("adapterHoundSubBreedList")
-    fun bindAdapterHoundSubBreedList(view: RecyclerView, breeds: List<String>?) {
+    @BindingAdapter("adapterSubBreedList")
+    fun bindAdapterSubBreedList(view: RecyclerView, breeds: List<String>?) {
         if (!breeds.isNullOrEmpty()) {
             val adapter: DogBreedAdapter = view.adapter as DogBreedAdapter
             adapter.addDogBreedList(breeds)
