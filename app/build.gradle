@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
 }
 
@@ -56,6 +57,9 @@ dependencies {
     implementation "org.koin:koin-android-scope:$versions.koinVersion"
     implementation "org.koin:koin-android-viewmodel:$versions.koinVersion"
 
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"
+
     // network
     implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttpVersion"
     implementation "com.squareup.retrofit2:converter-gson:$versions.retrofitVersion"
@@ -63,7 +67,6 @@ dependencies {
 
     // coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutinesVersion"
-
 
     // unit test
     testImplementation "junit:junit:$versions.junitVersion"
