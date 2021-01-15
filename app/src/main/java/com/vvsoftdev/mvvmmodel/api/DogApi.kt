@@ -8,5 +8,5 @@ import retrofit2.http.Path
 
 interface DogApi {
     @GET("/api/breed/{breed}/list")
-    suspend fun getHoundSubBreeds(@Path(value = "breed") breed: String): Response<DogSubBreed>
+    suspend fun getSubBreeds(@Path(value = "breed") breed: String): Response<DogSubBreed>
 }

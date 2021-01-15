@@ -1,19 +1,17 @@
 package com.vvsoftdev.mvvmmodel.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.switchMap
-import com.vvsoftdev.mvvmmodel.base.LiveCoroutinesViewModel
+import androidx.lifecycle.*
 import com.vvsoftdev.mvvmmodel.repository.MainRepository
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 
 class MainViewModel constructor(
     private val mainRepository: MainRepository
-) : LiveCoroutinesViewModel() {
+) : ViewModel() {
 
-    private var dogSubBreedsFetchingLiveData = MutableLiveData(true)
-    val dogSubBreedsListLiveData: LiveData<List<String>>
+    private val dogSubBreedsFetchingLiveData = MutableLiveData<List<String>>(listOf())
+    val dogSubBreedsListLiveData: LiveData<List<String>> = dogSubBreedsFetchingLiveData
 
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
     val isLoading: LiveData<Boolean> get() = _isLoading
@@ -25,27 +23,27 @@ class MainViewModel constructor(
     val breedNameLiveData: LiveData<String> get() = _breedNameLiveData
 
     init {
-        dogSubBreedsListLiveData =
-            dogSubBreedsFetchingLiveData.switchMap {
-                _breedNameLiveData.postValue("hound")
-                _isLoading.postValue(true)
-                showSubBreedsOf("hound")
-            }
+        viewModelScope.launch {
+            _breedNameLiveData.postValue("hound")
+            _isLoading.postValue(true)
+            loadSubBreedsOf("hound")
+        }
     }
 
-    private fun showSubBreedsOf(breed: String): LiveData<List<String>> =
-        launchOnViewModelScope {
-            mainRepository.loadSubBreedsList(
-                breed,
-                onSuccess = { _isLoading.postValue(false) },
-                onError = { _toastLiveData.postValue(it) }
-            ).asLiveData()
-        }
+    private suspend fun loadSubBreedsOf(breed: String) {
+        mainRepository.loadSubBreedsList(
+            breed,
+            onSuccess = { _isLoading.postValue(false) },
+            onError = { _toastLiveData.postValue(it) }
+        ).collect { value -> dogSubBreedsFetchingLiveData.value = value }
+    }
 
     fun onClickBreedName() {
-        _breedNameLiveData.postValue("retriever")
-        _isLoading.postValue(true)
-        showSubBreedsOf("retriever")
+        viewModelScope.launch {
+            _breedNameLiveData.postValue("retriever")
+            _isLoading.postValue(true)
+            loadSubBreedsOf("retriever")
+        }
     }
 
 }

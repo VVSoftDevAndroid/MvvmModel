@@ -1,7 +1,6 @@
 package com.vvsoftdev.mvvmmodel.ui
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import com.vvsoftdev.mvvmmodel.R
 import com.vvsoftdev.mvvmmodel.base.DatabindingActivity
 import com.vvsoftdev.mvvmmodel.databinding.ActivityMainBinding
