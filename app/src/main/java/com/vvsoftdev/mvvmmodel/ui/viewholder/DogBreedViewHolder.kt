@@ -1,6 +1,7 @@
 package com.vvsoftdev.mvvmmodel.ui.viewholder
 
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.ViewCompat
 import com.vvsoftdev.mvvmmodel.base.BaseViewHolder
 import com.vvsoftdev.mvvmmodel.databinding.ItemBreedBinding
@@ -27,7 +28,8 @@ class DogBreedViewHolder(view: View) : BaseViewHolder(view) {
     }
 
     override fun onClick(p0: View?) {
-        //todo
+        Toast.makeText(context(), data, Toast.LENGTH_SHORT).show()
+        //todo go to another activity with one random image from the subbreed
     }
 
     override fun onLongClick(p0: View?) = false
