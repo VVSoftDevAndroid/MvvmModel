@@ -10,8 +10,8 @@ class MainViewModel constructor(
     private val mainRepository: MainRepository
 ) : ViewModel() {
 
-    private val dogSubBreedsFetchingLiveData = MutableLiveData<List<String>>(listOf())
-    val dogSubBreedsListLiveData: LiveData<List<String>> = dogSubBreedsFetchingLiveData
+    private val _dogSubBreedsLiveData = MutableLiveData<List<String>>(listOf())
+    val dogSubBreedsListLiveData: LiveData<List<String>> = _dogSubBreedsLiveData
 
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
     val isLoading: LiveData<Boolean> get() = _isLoading
@@ -35,7 +35,7 @@ class MainViewModel constructor(
             breed,
             onSuccess = { _isLoading.postValue(false) },
             onError = { _toastLiveData.postValue(it) }
-        ).collect { value -> dogSubBreedsFetchingLiveData.value = value }
+        ).collect { value -> _dogSubBreedsLiveData.value = value }
     }
 
     fun onClickBreedName() {
