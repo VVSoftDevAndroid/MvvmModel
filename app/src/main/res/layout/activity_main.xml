@@ -40,12 +40,23 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/loadNewSubBreeds"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{viewmodel.breedNameLiveData}"
-            android:onClick="@{() -> viewmodel.onClickBreedName()}"
+            android:onClick="@{() -> viewmodel.onClickBreedName(viewmodel.breedNameLiveData)}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/change_livedata_to_retriever"
+            android:onClick="@{() -> viewmodel.onLoadNewBreed()}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/loadNewSubBreeds"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

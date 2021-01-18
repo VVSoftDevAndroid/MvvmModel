@@ -38,11 +38,14 @@ class MainViewModel constructor(
         ).collect { value -> _dogSubBreedsLiveData.value = value }
     }
 
-    fun onClickBreedName() {
+    fun onLoadNewBreed() {
+        _breedNameLiveData.postValue("retriever")
+    }
+
+    fun onClickBreedName(breed: String) {
+        _isLoading.postValue(true)
         viewModelScope.launch {
-            _breedNameLiveData.postValue("retriever")
-            _isLoading.postValue(true)
-            loadSubBreedsOf("retriever")
+            loadSubBreedsOf(breed)
         }
     }
 

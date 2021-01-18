@@ -1,6 +1,5 @@
 package com.vvsoftdev.mvvmmodel.api
 
-import com.vvsoftdev.mvvmmodel.data.DogBreed
 import com.vvsoftdev.mvvmmodel.data.DogSubBreed
 import retrofit2.Response
 import retrofit2.http.GET

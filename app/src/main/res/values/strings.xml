@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MvvmModel</string>
+    <string name="change_livedata_to_retriever">Change livedata to retriever</string>
 </resources>
