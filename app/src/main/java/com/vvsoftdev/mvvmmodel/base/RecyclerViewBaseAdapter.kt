@@ -26,9 +26,9 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.recyclerview.widget.RecyclerView
 import java.util.ArrayList
 
-/** BaseAdapter is an abstract class for structuring the base adapter class. */
+/** RecyclerViewBaseAdapter is an abstract class for structuring the base adapter class. */
 @Suppress("unused", "MemberVisibilityCanBePrivate", "RedundantOverride", "RedundantVisibilityModifier")
-abstract class BaseAdapter :
+abstract class RecyclerViewBaseAdapter :
     RecyclerView.Adapter<BaseViewHolder>(), LifecycleObserver {
     /** data holding list attribute. */
     private val sections = ArrayList<MutableList<Any>>()

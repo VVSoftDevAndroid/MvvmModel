@@ -3,11 +3,11 @@ package com.vvsoftdev.mvvmmodel.ui.adapter
 
 import android.view.View
 import com.vvsoftdev.mvvmmodel.R
-import com.vvsoftdev.mvvmmodel.base.BaseAdapter
+import com.vvsoftdev.mvvmmodel.base.RecyclerViewBaseAdapter
 import com.vvsoftdev.mvvmmodel.base.SectionRow
 import com.vvsoftdev.mvvmmodel.ui.viewholder.DogBreedViewHolder
 
-class DogBreedAdapter: BaseAdapter() {
+class DogBreedAdapter: RecyclerViewBaseAdapter() {
 
     init {
         addSection(arrayListOf<String>())

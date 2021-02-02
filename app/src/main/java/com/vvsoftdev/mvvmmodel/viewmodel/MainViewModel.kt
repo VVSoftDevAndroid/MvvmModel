@@ -39,7 +39,10 @@ class MainViewModel constructor(
     }
 
     fun onLoadNewBreed() {
-        _breedNameLiveData.postValue("retriever")
+        if (_breedNameLiveData.value.equals("hound"))
+            _breedNameLiveData.postValue("retriever")
+        else
+            _breedNameLiveData.postValue("hound")
     }
 
     fun onClickBreedName(breed: String) {

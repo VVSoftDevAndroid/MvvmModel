@@ -3,14 +3,14 @@ package com.vvsoftdev.mvvmmodel.ui.binding
 import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.vvsoftdev.mvvmmodel.base.BaseAdapter
+import com.vvsoftdev.mvvmmodel.base.RecyclerViewBaseAdapter
 import com.vvsoftdev.mvvmmodel.ui.adapter.DogBreedAdapter
 
 object RecyclerViewBinding {
 
     @JvmStatic
     @BindingAdapter("adapter")
-    fun bindAdapter(view: RecyclerView, baseAdapter: BaseAdapter) {
+    fun bindAdapter(view: RecyclerView, baseAdapter: RecyclerViewBaseAdapter) {
         view.adapter = baseAdapter
     }
 
